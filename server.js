@@ -9,12 +9,15 @@ const server = http.createServer((req,res) => {
     res.setHeader('Content-Type', 'text/html');
 
     // send an html file 
-    fs.readFile('./index.html', (err, data) => {
+    // fs (file system) creates a stream
+    fs.readFile('./pages/index.html', (err, data) => {
         if(err){
             console.log(err);
         }
         else{
             res.write(data);
+            // you can also just use this 
+            // res.end(data);
         }
         res.end();
     });
