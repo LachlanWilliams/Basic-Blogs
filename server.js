@@ -1,16 +1,23 @@
 const http = require('http')
+const fs = require('fs')
 
 const server = http.createServer((req,res) => {
+    //req = request, res = response 
     console.log(req.url, req.method);
 
+    // This sets the header content type 
     res.setHeader('Content-Type', 'text/html');
 
-    res.write('<head><link ref="styleseet" href="#"></head>');
-    res.write('<p>Node js server lets goooo </p>');
-    res.write('<p> second line</p>');
-    //res.write('<p>%d</p>',req.url);
-    res.end();
-
+    // send an html file 
+    fs.readFile('./index.html', (err, data) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.write(data);
+        }
+        res.end();
+    });
 
 });
 
