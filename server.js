@@ -28,6 +28,7 @@ const server = http.createServer((req,res) => {
             path += '404.html';
             res.statusCode = 404;
             break;
+            
     }
 
     // send an html file 
