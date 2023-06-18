@@ -1,0 +1,12 @@
+{
+  "name": "chess",
+  "version": "1.0.0",
+  "description": "I want to try to make chess using js and html",
+  "main": "board.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
