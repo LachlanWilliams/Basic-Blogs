@@ -24,6 +24,7 @@ app.get('/about-me', (req,res) => {
 });
 
 // 404 page 
-app.use((res,req) =>{
-    res.sendFile('./pages/404.html', {root: __dirname});
+// this stays at the bottom bc it will only run if all the other functions miss 
+app.use((req,res) =>{
+    res.status(404).sendFile('./pages/404.html', {root: __dirname});
 });
