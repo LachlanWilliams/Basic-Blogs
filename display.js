@@ -1,4 +1,14 @@
-// display.js
+//"use strict";
+
+//Imports 
+import {Board} from "./board.js";
+
+// Display function
+function display(){
+    const board = new Board();
+
+    board.renderBoard()
+}
 
 // Create a new div element for the box
 const box = document.createElement('div');
