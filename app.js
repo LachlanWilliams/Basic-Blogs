@@ -15,7 +15,8 @@ app.listen(3000);
 // takes user to main page 
 app.get('/', (req,res) => {
     //res.send('<p>home page</p>');
-    res.sendFile('./pages/index.html', {root: __dirname});
+    //res.sendFile('./pages/index.html', {root: __dirname});
+    res.render('index');
 });
 
 // takes user to about page
