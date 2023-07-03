@@ -3,6 +3,12 @@ const express = require('express');
 // express app
 const app = express();
 
+// register view engine 
+app.set('view engine', 'ejs');
+
+// view engine will look in the pages folder
+app.set('views', 'pages');
+
 // listen for requests
 app.listen(3000);
 
