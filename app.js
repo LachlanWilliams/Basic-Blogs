@@ -26,6 +26,10 @@ app.get('/about', (req,res) => {
     res.render('about')
 });
 
+app.get('/create', (req,res) =>{
+    res.render('create')
+});
+
 // redirect function
 app.get('/about-me', (req,res) => {
     res.render('about')
