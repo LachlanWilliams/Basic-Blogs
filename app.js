@@ -22,16 +22,18 @@ app.get('/', (req,res) => {
 // takes user to about page
 app.get('/about', (req,res) => {
     //res.send('<p>about page</p>');
-    res.sendFile('./pages/about.html', {root: __dirname});
+    //res.sendFile('./pages/about.html', {root: __dirname});
+    res.render('about')
 });
 
 // redirect function
 app.get('/about-me', (req,res) => {
-    res.redirect('/about');
+    res.render('about')
 });
 
 // 404 page 
 // this stays at the bottom bc it will only run if all the other functions miss 
 app.use((req,res) =>{
-    res.status(404).sendFile('./pages/404.html', {root: __dirname});
+    //res.status(404).sendFile('./pages/404.html', {root: __dirname});
+    res.status(404).render('404')
 });
