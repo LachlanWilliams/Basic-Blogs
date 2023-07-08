@@ -26,7 +26,7 @@ app.get('/about', (req,res) => {
     res.render('about')
 });
 
-app.get('/create', (req,res) =>{
+app.get('/blogs/create', (req,res) =>{
     res.render('create')
 });
 
