@@ -2,10 +2,10 @@
 I'm making a basic blogging website 
 
 # Instructions
-cd into Basic-blogs directory \n
-run: node app \n
-then load localhost: 3000 on a browser \n
+cd into Basic-blogs directory <br>
+run: node app <br>
+then load localhost: 3000 on a browser 
 
-for developing \n
-run: nodemon app \n
-this will allow you to save changes and not have to restart the server \n
+for developing <br>
+run: nodemon app <br>
+this will allow you to save changes and not have to restart the server 
