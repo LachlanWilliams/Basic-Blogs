@@ -1,11 +1,11 @@
-# Chess
-I want to try to make chess using js and html 
+# Basic Blogs 
+I'm making a basic blogging website 
 
 # Instructions
-cd into Chess directory 
-run: node server 
+cd into Basic-blogs directory 
+run: node app 
 then load localhost: 3000 on a browser
 
 for developing 
-run: nodemon server
+run: nodemon app
 this will allow you to save changes and not have to restart the server
