@@ -1,3 +1,10 @@
+/*
+This is being used anymore 
+However I just want to keep it
+so I may look back on it from when 
+I first learnt node 
+*/
+
 const http = require('http')
 const fs = require('fs')
 const _ = require('lodash')

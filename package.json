@@ -1,7 +1,7 @@
 {
-  "name": "chess",
+  "name": "Basic-blogs",
   "version": "1.0.0",
-  "description": "I want to try to make chess using js and html",
+  "description": "Simple blogging website",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
