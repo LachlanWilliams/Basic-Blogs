@@ -12,6 +12,16 @@ app.set('views', 'pages');
 // listen for requests
 app.listen(3000);
 
+app.use((req,res, next) => {
+    console.log('New request made:');
+    console.log('host: ', req.hostname);
+    console.log('path: ', req.path);
+    console.log('method: ', req.method);
+    console.log('\n')
+    next();
+
+});
+
 // takes user to main page 
 app.get('/', (req,res) => {
 
