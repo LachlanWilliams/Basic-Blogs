@@ -1,5 +1,5 @@
-const express = require('express');
-const morgan = require('morgan');
+const express = require('express'); // ejs files 
+const morgan = require('morgan'); // middleware requests 
 
 // express app
 const app = express();
@@ -12,6 +12,10 @@ app.set('views', 'pages');
 
 // listen for requests
 app.listen(3000);
+
+// middleware and static files 
+
+app.use(express.static('public'))
 
 app.use(morgan('tiny'));
 
