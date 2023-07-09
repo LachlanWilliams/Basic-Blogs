@@ -15,6 +15,7 @@ app.listen(3000);
 // takes user to main page 
 app.get('/', (req,res) => {
 
+
     const blogs = [
         {title: 'Autumn leaves', snippet: "are yellow and brown"},
         {title: 'Summer leaves', snippet: "are green and yellow"},
