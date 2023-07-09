@@ -1,11 +1,16 @@
 const express = require('express'); // ejs files 
 const morgan = require('morgan'); // middleware requests 
+const mongoose = require('mongoose'); // mongoose for database
+const { result } = require('lodash');
 
 // express app
 const app = express();
 
 //connect to mongoDB
-const dpURI = 'mongorestore --uri mongodb+srv://BasicBlogs-BasicUser:BeepBoop1001@cluster0.rfynja1.mongodb.net ';
+const dbURI = 'mongodb+srv://BasicBlogs-BasicUser:BeepBoop1001@cluster0.rfynja1.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
+.then((result) => app.listen(3000))
+.catch((err) => console.log(err));
 
 // register view engine 
 app.set('view engine', 'ejs');
