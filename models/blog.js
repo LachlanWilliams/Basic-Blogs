@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const schema = mongoose.Schema;
 
 const blogSchema = new schema({
@@ -18,5 +17,4 @@ const blogSchema = new schema({
 }, { timestamps: true});
 
 const Blog = mongoose.model('Blog', blogSchema);
-
 module.exports = Blog;

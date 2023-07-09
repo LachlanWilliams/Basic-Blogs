@@ -1,7 +1,8 @@
 const express = require('express'); // ejs files 
 const morgan = require('morgan'); // middleware requests 
 const mongoose = require('mongoose'); // mongoose for database
-const { result } = require('lodash');
+const Blog = require('./models/blog')
+
 
 // express app
 const app = express();
@@ -9,8 +10,8 @@ const app = express();
 //connect to mongoDB
 const dbURI = 'mongodb+srv://BasicBlogs-BasicUser:BeepBoop1001@cluster0.rfynja1.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
-.then((result) => app.listen(3000))
-.catch((err) => console.log(err));
+    .then((result) => app.listen(3000))
+    .catch((err) => console.log(err));
 
 // register view engine 
 app.set('view engine', 'ejs');
@@ -18,14 +19,38 @@ app.set('view engine', 'ejs');
 // view engine will look in the pages folder
 app.set('views', 'pages');
 
-// listen for requests
-app.listen(3000);
-
 // middleware and static files 
 
 app.use(express.static('public'))
 
 app.use(morgan('tiny'));
+
+app.get('/add-blog', (req,res) =>{
+    const blog = new Blog({
+        title: 'testTitle2',
+        snippet: 'testSnippet',
+        body: 'testBody'
+    });
+
+    blog.save()
+        .then((result) => {
+            res.send(result)
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+app.get('/all-blogs', (req, res) => {
+    Blog.find()
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  
 
 // takes user to main page 
 app.get('/', (req,res) => {
