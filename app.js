@@ -25,59 +25,20 @@ app.use(express.static('public'))
 
 app.use(morgan('tiny'));
 
-app.get('/add-blog', (req,res) =>{
-    const blog = new Blog({
-        title: 'testTitle2',
-        snippet: 'testSnippet',
-        body: 'testBody'
-    });
-
-    blog.save()
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-app.get('/all-blogs', (req, res) => {
-    Blog.find()
-      .then(result => {
-        res.send(result);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
-
-  app.get('/single-blog', (req, res) => {
-    Blog.findById('64aa664df6c0026f782e9983')
-      .then(result => {
-        res.send(result);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
-
-  
-
 // takes user to main page 
 app.get('/', (req,res) => {
+    res.redirect('/blogs');
+});
 
+app.get('/blogs', (req,res) => {
+    Blog.find()
+    .then(result => {
+      res.render('index', {title: 'All Blogs', blogs: result})
+    })
+    .catch(err => {
+      console.log(err);
+    });
 
-    const blogs = [
-        {title: 'Autumn leaves', snippet: "are yellow and brown"},
-        {title: 'Summer leaves', snippet: "are green and yellow"},
-        {title: 'Winter leaves', snippet: "are all gone"},
-        {title: 'Spring leaves', snippet: "are bountiful and green"},
-    ]
-
-
-    //res.send('<p>home page</p>');
-    //res.sendFile('./pages/index.html', {root: __dirname});
-    res.render('index', {title: 'Home', blogs});
 });
 
 // takes user to about page
