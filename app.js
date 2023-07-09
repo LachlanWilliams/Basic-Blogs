@@ -53,6 +53,11 @@ app.post('/blogs', (req,res) => {
       });
 });
 
+// takes user to the create forum
+app.get('/blogs/create', (req,res) =>{
+    res.render('create', {title: 'Create'})
+});
+
 app.get('/blogs/:id', (req,res) =>{
     const id = req.params.id;
     Blog.findById(id)
@@ -62,11 +67,6 @@ app.get('/blogs/:id', (req,res) =>{
       .catch(err => {
         console.log(err);
       });
-});
-
-// takes user to the create forum
-app.get('/blogs/create', (req,res) =>{
-    res.render('create', {title: 'Create'})
 });
 
 // takes user to about page
