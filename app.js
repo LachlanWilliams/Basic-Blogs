@@ -53,15 +53,27 @@ app.post('/blogs', (req,res) => {
       });
 });
 
+app.get('/blogs/:id', (req,res) =>{
+    const id = req.params.id;
+    Blog.findById(id)
+    .then(result => {
+        res.render('details', {title: 'Blog Details', blog: result})
+      })
+      .catch(err => {
+        console.log(err);
+      });
+});
+
+// takes user to the create forum
+app.get('/blogs/create', (req,res) =>{
+    res.render('create', {title: 'Create'})
+});
+
 // takes user to about page
 app.get('/about', (req,res) => {
     //res.send('<p>about page</p>');
     //res.sendFile('./pages/about.html', {root: __dirname});
     res.render('about', {title: 'About'})
-});
-
-app.get('/blogs/create', (req,res) =>{
-    res.render('create', {title: 'Create'})
 });
 
 // redirect function
