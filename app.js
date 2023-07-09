@@ -50,6 +50,17 @@ app.get('/all-blogs', (req, res) => {
         console.log(err);
       });
   });
+
+  app.get('/single-blog', (req, res) => {
+    Blog.findById('64aa664df6c0026f782e9983')
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   
 
 // takes user to main page 
