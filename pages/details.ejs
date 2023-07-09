@@ -2,18 +2,32 @@
     <%- include('./partials/header.ejs')%>
 
     <body>
-
-        <%- include('./partials/nav.ejs')%>
-
-        
-        <div class="detail content">
-            <h2><%= blog.title %></h2>
-            <div class="content">
-                <p><%= blog.body %></p>
-            </div>
-            <a class="delete" data-doc="<%= blog.id %>">delete</a>
+        <%- include("./partials/nav.ejs") %>
+      
+        <div class="details content">
+          <h2><%= blog.title %></h2>
+          <div class="content">
+            <p><%= blog.body %></p>
+          </div>
+          <a class="delete" data-doc="<%= blog._id %>">delete</a>
         </div>
     
         <%- include('./partials/footer.ejs')%>
+
+        <script>
+            const bin = document.querySelector('a.delete');
+
+            bin.addEventListener('click', (e) => {
+                const endpoint = `/blogs/${bin.dataset.doc}`;
+
+                fetch(endpoint, {
+                    method: 'DELETE'
+
+                })
+                .then((response) => response.json())
+                .then((data) => window.location.href = data.redirect)
+                .catch((err) => {onsole.log(err)});
+            });
+        </script>
     </body>
 </html>
