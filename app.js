@@ -14,9 +14,18 @@ app.listen(3000);
 
 // takes user to main page 
 app.get('/', (req,res) => {
+
+    const blogs = [
+        {title: 'Autumn leaves', snippet: "are yellow and brown"},
+        {title: 'Summer leaves', snippet: "are green and yellow"},
+        {title: 'Winter leaves', snippet: "are all gone"},
+        {title: 'Spring leaves', snippet: "are bountiful and green"},
+    ]
+
+
     //res.send('<p>home page</p>');
     //res.sendFile('./pages/index.html', {root: __dirname});
-    res.render('index', {title: 'Home'});
+    res.render('index', {title: 'Home', blogs});
 });
 
 // takes user to about page
