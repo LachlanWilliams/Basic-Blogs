@@ -6,19 +6,7 @@
     </head>
     <body>
 
-        <nav>
-            <div class="site-title">
-                <a href="/"><h1>Home</h1></a>
-                <p>Just some website using ejs</p>
-
-            </div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/blogs/create">New blog</a></li>
-
-            </ul>
-        </nav>
+        <%- include('./partials/nav.ejs')%>
         
         <div class="blogs contents">
             <h2>All blogs</h2>

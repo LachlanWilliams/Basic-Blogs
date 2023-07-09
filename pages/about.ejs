@@ -5,19 +5,9 @@
         <title> Basic Blogs | <%= title %> </title>
     </head>
     <body>
-        <nav>
-            <div class="site-title">
-                <a href="/"><h1>About</h1></a>
-                <p>This the about page</p>
+        
+        <%- include('./partials/nav.ejs')%>
 
-            </div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/blogs/create">New blog</a></li>
-
-            </ul>
-        </nav>
         
         <div class="blogs contents">
             <h2>All blogs</h2>
