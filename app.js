@@ -4,6 +4,9 @@ const morgan = require('morgan'); // middleware requests
 // express app
 const app = express();
 
+//connect to mongoDB
+const dpURI = 'mongorestore --uri mongodb+srv://BasicBlogs-BasicUser:BeepBoop1001@cluster0.rfynja1.mongodb.net ';
+
 // register view engine 
 app.set('view engine', 'ejs');
 
