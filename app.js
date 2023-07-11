@@ -1,8 +1,7 @@
 const express = require('express'); // ejs files 
 const morgan = require('morgan'); // middleware requests 
 const mongoose = require('mongoose'); // mongoose for database
-const Blog = require('./models/blog')
-
+const blogRoutes = require('./routes/blogRoutes');
 
 // express app
 const app = express();
@@ -24,61 +23,16 @@ app.set('views', 'pages');
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('tiny'));
+app.use((req,res,next) => {
+    res.locals.path = req.path;
+    next();
+})
+
 
 // takes user to main page 
 app.get('/', (req,res) => {
     res.redirect('/blogs');
 });
-
-app.get('/blogs', (req,res) => {
-    Blog.find().sort({createdAt: -1})
-    .then(result => {
-      res.render('index', {title: 'All Blogs', blogs: result})
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
-});
-
-app.post('/blogs', (req,res) => {
-    const blog = new Blog(req.body);
-
-    blog.save()
-    .then(result => {
-        res.redirect('/blogs')
-      })
-      .catch(err => {
-        console.log(err);
-      });
-});
-
-// takes user to the create forum
-app.get('/blogs/create', (req,res) =>{
-    res.render('create', {title: 'Create'})
-});
-
-app.get('/blogs/:id', (req,res) =>{
-    const id = req.params.id;
-    Blog.findById(id)
-    .then(result => {
-        res.render('details', {title: 'Blog Details', blog: result})
-      })
-      .catch(err => {
-        console.log(err);
-      });
-});
-
-app.delete('/blogs/:id', (req,res) =>{
-    const id = req.params.id;
-
-    Blog.findByIdAndDelete(id)
-        .then(result => {
-            res.json({ redirect: '/blogs'})
-        })
-        .catch(err => console.log(err))
-
-})
 
 // takes user to about page
 app.get('/about', (req,res) => {
@@ -91,6 +45,9 @@ app.get('/about', (req,res) => {
 app.get('/about-me', (req,res) => {
     res.render('about')
 });
+
+// blog routes 
+app.use('/blogs', blogRoutes);
 
 // 404 page 
 // this stays at the bottom bc it will only run if all the other functions miss 
