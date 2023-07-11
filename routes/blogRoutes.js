@@ -1,4 +1,4 @@
-const express = require('epxress');
+const express = require('express');
 const blogController = require('../controllers/blogcontroller');
 
 const router = express.Router();
